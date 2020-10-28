@@ -1,32 +1,47 @@
 const counter = document.querySelector("#counter")
+const buttonPlus = document.querySelector("#plus")
+const buttonMinus = document.querySelector("#minus")
+const buttonHeart = document.querySelector("#heart")
+const buttonPause = document.querySelector("#pause")
+const likes = document.querySelector(".likes")
 
-function incrementCounter() {
+
+//Incrementing the Timer
+function counterInterval() {
   let countNum = parseInt(counter.innerText)
   counter.innerText = countNum + 1
 }
 
-window.setInterval(incrementCounter, 1000);
+window.setInterval(counterInterval, 1000);
+
+//Manually Increment the Timer
+buttonPlus.addEventListener("click", function() {
+  counter.innerText = parseInt(counter.innerText) + 1
+})
+
+//Manually Decrement the Timer
+buttonMinus.addEventListener("click", function() {
+  counter.innerText = parseInt(counter.innerText) - 1
+})
 
 
+//Like an Individual Number of the Counter
+buttonHeart.addEventListener("click", function() {
+	
+	if (document.getElementById(`${counter.innerText}`)) {
+		let ourVariable = document.getElementById(`${counter.innerText}`)
+		console.log(ourVariable.value)
+   
+  } else {
+    const li = document.createElement('li')
+    li.id = counter.innerText
+    const numberOfLikes = 1
+		li.innerHTML = `${counter.innerText} Liked: ${numberOfLikes} time(s).`
+		likes.appendChild(li)
+  }
+})
 
-// function addALike() {
-//   document.addEventListener("click", function(e) {
-//     if (e.target.matches('.like-button')) {
-//       const player = e.target.parentElement
-//       // console.log(player)
-//       const likes = player.querySelector('.likes')
-//       // console.log(likes)
-//       const currentLikes = parseInt(likes.innerHTML)
-//       // console.log(currentLikes)
-//       const newLikes = currentLikes + 1
-//       // console.log(newLikes)
+buttonPause.addEventListener("click", function() {
 
-//       likes.innerHTML = newLikes + " likes"
-//     }
-//   })
-// }
-
-// addALike()
-
-
-
+	// document.getElementById("myBtn").disabled = true;
+})
